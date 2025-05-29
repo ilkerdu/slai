@@ -1,0 +1,5 @@
+{
+  "name": "Copy of SLASHAI",
+  "description": "A web application that uses AI to generate images from text prompts, with real Solana payments for credits via Phantom wallet.",
+  "requestFramePermissions": []
+}

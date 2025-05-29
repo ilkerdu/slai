@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLASHAI</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@solana/wallet-adapter-react-ui@latest/styles.css" />
+  <!-- 
+    JEKO FONT INTEGRATION:
+    Option 1: If you have a CDN link for Jeko font, add it here.
+    Example: <link href="URL_TO_JEKO_FONT_CDN" rel="stylesheet">
+
+    Option 2: If you have Jeko font files (e.g., .woff2, .woff), 
+    place them in your project (e.g., in a 'fonts' folder) and 
+    define @font-face rules below.
+  -->
+  <style>
+    /*
+    Example of @font-face for Jeko (if you have the font files):
+    @font-face {
+      font-family: 'Jeko';
+      src: url('./fonts/Jeko-Regular.woff2') format('woff2'), /* Assuming fonts folder is relative to index.html */
+           url('./fonts/Jeko-Regular.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Jeko';
+      src: url('./fonts/Jeko-Bold.woff2') format('woff2'), /* Assuming fonts folder is relative to index.html */
+           url('./fonts/Jeko-Bold.woff') format('woff');
+      font-weight: bold;
+      font-style: normal;
+    }
+    */
+
+    body {
+      font-family: 'Jeko', 'Inter', sans-serif; /* Jeko added as primary font */
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1a202c; /* gray-800 (adjusted for Tailwind v2) */
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #4a5568; /* gray-600 */
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #718096; /* gray-500 */
+    }
+    /* Wallet adapter modal style overrides for dark theme */
+    .wallet-adapter-modal-wrapper {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+    .wallet-adapter-modal-container {
+      background-color: #2d3748; /* gray-700 */
+    }
+    .wallet-adapter-modal-title {
+      color: #e2e8f0; /* gray-200 */
+    }
+    .wallet-adapter-button, .wallet-adapter-modal-list-button {
+      background-color: #4a5568; /* gray-600 */
+      color: #e2e8f0; /* gray-200 */
+    }
+    .wallet-adapter-button:hover, .wallet-adapter-modal-list-button:hover {
+      background-color: #718096; /* gray-500 */
+    }
+    .wallet-adapter-modal-list .wallet-adapter-modal-list-button svg {
+        fill: #e2e8f0; /* gray-200 */
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "@/": "./",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.2.0",
+    "@solana/web3.js": "https://esm.sh/@solana/web3.js@^1.95.0",
+    "@solana/wallet-adapter-base": "https://esm.sh/@solana/wallet-adapter-base@^0.9.23",
+    "@solana/wallet-adapter-react": "https://esm.sh/@solana/wallet-adapter-react@^0.15.35",
+    "@solana/wallet-adapter-react-ui": "https://esm.sh/@solana/wallet-adapter-react-ui@^0.9.35",
+    "@solana/wallet-adapter-phantom": "https://esm.sh/@solana/wallet-adapter-phantom@^0.9.24",
+    "buffer/": "https://esm.sh/buffer@6.0.3/"
+  }
+}
+</script>
+</head>
+<body class="bg-gray-900 text-white">
+  <div id="root"></div>
+  <script type="module" src="index.tsx"></script> <!-- Changed from /index.tsx to index.tsx -->
+</body>
+</html>
+<link rel="stylesheet" href="index.css">
+<script src="index.tsx" type="module"></script>
