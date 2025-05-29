@@ -1,21 +1,14 @@
-
 import { GoogleGenAI } from "@google/genai";
 import { GEMINI_IMAGE_MODEL } from "../constants";
 
 const getApiKey = (): string | undefined => {
-  // In a real browser environment, process.env might not be directly available
-  // unless set by a build tool like Vite or Webpack.
-  // For this example, we assume it's available or hardcoded for browser-only demo.
-  // In a production scenario, API keys should NOT be exposed client-side.
-  // This service would typically be a backend call.
-  // For this specific problem, we must use process.env.API_KEY.
-  return process.env.API_KEY;
+  return import.meta.env.VITE_GEMINI_API_KEY;
 };
 
 export const generateImageFromPrompt = async (prompt: string): Promise<string> => {
   const apiKey = getApiKey();
   if (!apiKey) {
-    throw new Error("API key is not configured. Please set the API_KEY environment variable.");
+    throw new Error("API key is not configured. Please set the VITE_GEMINI_API_KEY environment variable.");
   }
 
   const ai = new GoogleGenAI({ apiKey });
@@ -36,11 +29,10 @@ export const generateImageFromPrompt = async (prompt: string): Promise<string> =
   } catch (error) {
     console.error("Error generating image with Gemini API:", error);
     if (error instanceof Error) {
-        // Try to provide a more user-friendly message
         if (error.message.includes("API key not valid")) {
-            throw new Error("The configured API key is invalid. Please check your API_KEY.");
+            throw new Error("The configured API key is invalid. Please check your VITE_GEMINI_API_KEY.");
         }
-         if (error.message.includes("quota")) {
+        if (error.message.includes("quota")) {
             throw new Error("API quota exceeded. Please check your Gemini API billing and limits.");
         }
         throw new Error(`Failed to generate image: ${error.message}`);
